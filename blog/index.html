@@ -4,23 +4,25 @@ layout: default
 
 <h1>Blog</h1>
 
-<div id="main-content">
+<div >
     {% assign posts = paginator.posts %}
     {% include post-listing.html %}
 
-    <div id="pagination">
-        {% if paginator.previous_page %}
-        <a href="{% if paginator.previous_page == 1 %}/blog/{% else %}/page{{paginator.previous_page}}{% endif %}" class="previous">Previous</a>
-        {% else %}
-            <span class="previous">Previous</span>
-        {% endif %}
+    <div class="pagination">
+        <ul>
+            {% if paginator.previous_page %}
+            <li><a href="{% if paginator.previous_page == 1 %}/blog/{% else %}/page{{paginator.previous_page}}{% endif %}" >Previous</a></li>
+            {% else %}
+            <li><span >Previous</span></li>
+            {% endif %}
 
-        <span class="page_number">Page:{{ paginator.page }} of {{ paginator.total_pages }}</span>
+            <li><span class="page_number">Page:{{ paginator.page }} of {{ paginator.total_pages }}</span></li>
 
-        {% if paginator.next_page %}
-            <a href="/page{{ paginator.next_page }}" class="next">Next</a>
-        {% else %}
-            <span class="next">Next</span>
-        {% endif %}
+            {% if paginator.next_page %}
+            <li><a href="/page{{ paginator.next_page }}">Next</a><li>
+            {% else %}
+            <li><span >Next</span></li>
+            {% endif %}
+        </ul>
     </div>
 </div>
